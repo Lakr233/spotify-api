@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      HTTP_ADDR: ":8080"
+      DB_METADATA_PATH: "/data/spotify_metadata.sqlite3"
+      DB_PLAYLISTS_PATH: "/data/spotify_playlists.sqlite3"
+      DB_TRACK_URLS_PATH: "/data/spotify_track_urls.sqlite3"
+      SPOTIFY_BASE_URL: "https://spotify-api.qaq.wiki"
+      TRACKFILE_UPSTREAM_URL: ""
+      CORS_ALLOW_ORIGIN: "*"
+    volumes:
+      - ./database:/data:ro
